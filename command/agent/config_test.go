@@ -1429,6 +1429,17 @@ func TestDecodeConfig_Checks(t *testing.T) {
 				"timeout": "100ms",
 				"service_id": "insecure-sslservice",
 				"tls_skip_verify": true
+			},
+			{
+				"id": "chk7",
+				"name": "service:insecure-sslservice",
+				"HTTP": "https://insecure-sslservice/status",
+				"Header": {"a":["b"], "c":["d", "e"]},
+				"Method": "PUT",
+				"interval": "10s",
+				"timeout": "100ms",
+				"service_id": "insecure-sslservice",
+				"tls_skip_verify": true
 			}
 		]
 	}`
@@ -1481,6 +1492,17 @@ func TestDecodeConfig_Checks(t *testing.T) {
 				Name:          "service:insecure-sslservice",
 				ServiceID:     "insecure-sslservice",
 				HTTP:          "https://insecure-sslservice/status",
+				Interval:      10 * time.Second,
+				Timeout:       100 * time.Millisecond,
+				TLSSkipVerify: true,
+			},
+			&CheckDefinition{
+				ID:            "chk7",
+				Name:          "service:insecure-sslservice",
+				ServiceID:     "insecure-sslservice",
+				HTTP:          "https://insecure-sslservice/status",
+				Header:        map[string][]string{"a": []string{"b"}, "c": []string{"d", "e"}},
+				Method:        "PUT",
 				Interval:      10 * time.Second,
 				Timeout:       100 * time.Millisecond,
 				TLSSkipVerify: true,
