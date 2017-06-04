@@ -8,7 +8,7 @@ description: |-
 
 # Consul Agent
 
-The Consul agent is the core process of Consul. The agent maintains membership
+[Consul agent 是整个 Consul 服务的核心。 ](# "The Consul agent is the core process of Consul.") The agent maintains membership
 information, registers services, runs checks, responds to queries,
 and more. The agent must run on every node that is part of a Consul cluster.
 
